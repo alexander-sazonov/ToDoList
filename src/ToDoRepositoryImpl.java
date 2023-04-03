@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ToDoRepositoryImpl implements ToDoRepository {
-    protected List<ToDo> toDoList = new ArrayList<>();
+    protected List<ToDo> todoList = new ArrayList<>();
 
     private int autoincrementId = 0;
     @Override
@@ -11,12 +11,12 @@ public class ToDoRepositoryImpl implements ToDoRepository {
             toDo.setId(autoincrementId++);
         }
 
-        toDoList.add(toDo);
+        todoList.add(toDo);
     }
 
     @Override
     public void deleteToDo(ToDo toDo) {
-        toDoList.remove(toDo);
+        todoList.remove(toDo);
     }
 
     @Override
@@ -29,7 +29,7 @@ public class ToDoRepositoryImpl implements ToDoRepository {
     @Override
     public ToDo getToDo(int id) {
         ToDo result = null;
-        for(ToDo todo: toDoList){
+        for(ToDo todo: todoList){
             if (todo.getId() == id){
                 result = todo;
             }
@@ -38,7 +38,7 @@ public class ToDoRepositoryImpl implements ToDoRepository {
     }
 
     @Override
-    public List<ToDo> getToDoList() {
-        return toDoList;
+    public List<ToDo> getTodoList() {
+        return todoList;
     }
 }

@@ -6,5 +6,5 @@ public interface ToDoRepository {
     void updateToDo(ToDo toDo);
     ToDo getToDo(int id);
 
-    List<ToDo> getToDoList();
+    List<ToDo> getTodoList();
 }
