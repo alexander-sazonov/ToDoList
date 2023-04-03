@@ -33,7 +33,14 @@ public class ToDoRepositoryFileImpl extends ToDoRepositoryImpl {
     }
 
     private void saveToFile(){
-
+        try(FileWriter fw = new FileWriter(fileName);){
+           for(ToDo toDo: todoList){
+               String line = String.format("%d,%s,%s\n",toDo.getId(),toDo.getName(), toDo.getDescription());
+               fw.write(line);
+           }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override
@@ -45,13 +52,14 @@ public class ToDoRepositoryFileImpl extends ToDoRepositoryImpl {
     @Override
     public void deleteToDo(ToDo toDo) {
         super.deleteToDo(toDo);
+        saveToFile();
 
     }
 
     @Override
     public void updateToDo(ToDo toDo) {
         super.updateToDo(toDo);
-
+        saveToFile();
     }
 
     @Override
